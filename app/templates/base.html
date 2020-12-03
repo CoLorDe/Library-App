@@ -1,0 +1,30 @@
+<header>
+</header>
+<head>
+  {% if title %}
+  <title>{{title}}|Textureasy</title>
+  {% else %}
+  <title>Textureasy</title>
+  {% endif %}
+</head>
+<div>
+  <h1>Textureasy</h1>
+  <nav>
+    <a href="{{ url_for('base.index') }}">Home</a>
+    <a href="{{ url_for('base.blog') }}">Blog</a>
+    <a href="{{ url_for('base.about') }}">About</a>
+    <a href="{{ url_for('base.contact') }}">Contact</a>
+  </nav>
+</div>
+<div>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</div>
